@@ -41,7 +41,7 @@ impl FromStr for Person {
     fn from_str(s: &str) -> Result<Person, Self::Err> {
         match s.split(',').collect::<Vec<&str>>().as_slice() {
             &[""] => Err(Self::Err::Empty),
-            &["", age] => Err(Self::Err::NoName),
+            &["", _] => Err(Self::Err::NoName),
             &[name, age] => {
                 let name = name.to_string();
                 match age.parse::<usize>() {
